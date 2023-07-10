@@ -1,0 +1,9 @@
+---
+#task to start install and start nginx
+- name: install nginx
+  apt: nginx
+  state: present
+- name: start nginx
+  service:
+    name: nginx
+    state: started

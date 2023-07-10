@@ -1,0 +1,10 @@
+---
+
+- name: install nginx,mongodb,wordpress
+  hosts: all
+  become: true
+  roles:
+    - prerequisites
+    - mongodb 
+    - nginx
+

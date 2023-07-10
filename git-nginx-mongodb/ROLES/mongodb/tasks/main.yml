@@ -1,0 +1,24 @@
+---
+# tasks file for mongodb
+
+- name: MongoDb -import public key
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: EA312927
+
+- name: MongoDb add repo
+  apt_repository:
+    filename: '/etc/apt/sources.list.d/mongodb-org-6.0.list'
+    repo: 'https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse'
+    state: present
+    update_cache: yes
+
+- name: Install mongoDB
+  apt:
+    name: mongodb-org
+    state: present
+
+- name: start Mongo
+  service:
+    name: mongodb-org
+    state: started
